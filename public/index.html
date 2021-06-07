@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <title>Chatterbox</title>
+</head>
+
+<body>
+    <h1 class="title">💬Chatterbox</h1>
+    <div class="main">
+
+        <div class="name">
+            <span><i class="far fa-user"></i></span>
+            <input type="text" id="name-input" class="name-input" value="anonymous" maxlength="20" />
+        </div>
+
+        <ul class="message-container" id="message-container">
+
+            <!-- <li class="message-left">
+                <p class="message">
+                    <span class="uname">
+                    </span>
+                </p>
+            </li>
+            <span class="ttl">
+            </span>
+
+            <li class="message-right">
+                <p class="message">
+                    <span class="uname">
+                    </span>
+                </p>
+            </li>
+            <span class="ttr">
+            </span>
+
+            <li class="message-feedback">
+                <p class="feedback" id="feedback"></p>
+            </li> -->
+
+        </ul>
+
+        <form class="message-form" id="message-form">
+
+            <input type="text" name="message" id="message-input" class="message-input" autocomplete="off" placeholder="Type a message">
+
+            <div class="v-divider"></div>
+            <button type="submit" class="send-button">
+                Send <span><i class="fas fa-paper-plane"></i></span>
+            </button>
+
+        </form>
+
+    </div>
+    <h3 class="clients-total" id="clients-total"></h3>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" referrerpolicy="no-referrer"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
