@@ -13,15 +13,14 @@ let socketsConnected = new Set();
 io.on('connection', onConnected)
 
 function onConnected(socket) {
-    console.log("socket connected: ", socket.id)
+  //  console.log("socket connected: ", socket.id)
     socketsConnected.add(socket.id)
 
     io.emit('clients-total', socketsConnected.size)
 
     socket.on('disconnect', () => {
-        console.log("socket disconnected: ", socket.id)
+    //    console.log("socket disconnected: ", socket.id)
         socketsConnected.delete(socket.id) 
-
         io.emit('clients-total', socketsConnected.size)
     })
 

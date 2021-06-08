@@ -3,11 +3,20 @@ const socket = io()
 const clientsTotal = document.getElementById('clients-total')
 
 const messageContainer = document.getElementById('message-container')
-const nameInput = document.getElementById('name-input')
+// const nameInput = document.getElementById('name-input')
 const messageForm = document.getElementById('message-form')
 const messageInput = document.getElementById('message-input')
 
 const tune = new Audio('/tune.mp3')
+
+const username = prompt("Enter Your Name ");
+if (username == '') {
+    document.getElementById("name-input").innerHTML = `anonymous`;
+}
+else {
+    document.getElementById("name-input").innerHTML = username;
+}
+
 
 socket.on('clients-total', (data) => {
     clientsTotal.innerText = `Members: ${data}`
@@ -21,7 +30,7 @@ messageForm.addEventListener('submit', (e) => {
 function sendMessage() {
     //console.log(messageInput.value)
     const data = {
-        name: nameInput.value,
+        name: username,
         message: messageInput.value,
         dateTime: new Date(),
     }
@@ -41,11 +50,13 @@ function addMessage(isOwnMessage, data) {
     const element = `
     <li class="${isOwnMessage ? 'message-right' : 'message-left'}">
         <p class="message">
-            <span class="uname">${data.name}</span>
+            <span class="uname">
+                ${data.name}
+            </span>
                 ${data.message}
         </p>
     </li>
-    <span class="${isOwnMessage ? 'ttr' : 'ttl'}">${moment(data.dateTime).fromNow()}</span>
+    <span class="${isOwnMessage ? 'ttr' : 'ttl'}">${moment(data.dateTime).format("ddd, h:m A")}</span>
     `
     if (data.message != '') {
         messageContainer.innerHTML += element;
@@ -60,12 +71,12 @@ function scrollToBottom() {
 
 messageInput.addEventListener('focus', (e) => {
     socket.emit('feedback', {
-        feedback: `${nameInput.value} is typing...`,
+        feedback: `${username} is typing...`,
     })
 })
 messageInput.addEventListener('keypress', (e) => {
     socket.emit('feedback', {
-        feedback: `${nameInput.value} is typing...`,
+        feedback: `${username} is typing...`,
     })
 })
 messageInput.addEventListener('blur', (e) => {
@@ -90,4 +101,3 @@ function clearFeedback() {
         element.parentNode.removeChild(element)
     })
 }
-
