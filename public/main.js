@@ -17,6 +17,26 @@ else {
     document.getElementById("name-input").innerHTML = username;
 }
 
+socket.emit('new-user-joined', username);
+
+socket.on('user-joined', (data) => {
+    const element = `
+    <li class="message-feedbackk">
+        <p class="feedbackk" id="feedbackk">${data} joined the chat </p>
+    </li>`
+
+    messageContainer.innerHTML += element;
+})
+
+socket.on('user-left', (data) => {
+    clearFeedback()
+    const element = `
+    <li class="message-feedbackk">
+        <p class="feedbackk" id="feedbackk">${data} left the chat </p>
+    </li>`
+
+    messageContainer.innerHTML += element;
+})
 
 socket.on('clients-total', (data) => {
     clientsTotal.innerText = `Members: ${data}`

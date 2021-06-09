@@ -27,7 +27,7 @@ body{
     overflow: hidden;
     background: #fff;
     border-radius: 25px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.144) ;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.226) ;
 }
 
 .name{
@@ -53,7 +53,7 @@ body{
     flex-direction: column;
     width: 400px;
     height: 400px;
-    background: rgb(242, 243, 243);
+    background: rgb(229, 231, 231);
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -114,7 +114,7 @@ span.ttr
     color: rgb(175, 175, 175);
 }
 
-.feedback{
+.feedback,.feedbackk{
     font-size: 13px;
     font-style: italic;
     text-align: center;
