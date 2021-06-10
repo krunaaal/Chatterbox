@@ -1,7 +1,6 @@
 const socket = io()
 
 const clientsTotal = document.getElementById('clients-total')
-
 const messageContainer = document.getElementById('message-container')
 // const nameInput = document.getElementById('name-input')
 const messageForm = document.getElementById('message-form')
@@ -9,13 +8,9 @@ const messageInput = document.getElementById('message-input')
 
 const tune = new Audio('/tune.mp3')
 
-const username = prompt("Enter Your Name ");
-if (username == '') {
-    document.getElementById("name-input").innerHTML = `anonymous`;
-}
-else {
-    document.getElementById("name-input").innerHTML = username;
-}
+const username = prompt("Enter Your Name ","anonymous");
+
+document.getElementById("name-input").innerHTML = username;
 
 socket.emit('new-user-joined', username);
 
