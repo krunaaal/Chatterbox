@@ -21,6 +21,7 @@ socket.on('user-joined', (data) => {
     </li>`
 
     messageContainer.innerHTML += element;
+    scrollToBottom();
 })
 
 socket.on('user-left', (data) => {
@@ -31,6 +32,7 @@ socket.on('user-left', (data) => {
     </li>`
 
     messageContainer.innerHTML += element;
+    scrollToBottom();
 })
 
 socket.on('clients-total', (data) => {
